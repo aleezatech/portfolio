@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleeza | Web &amp; Mobile Developer</title>
+  <meta name="description" content="Aleeza is a computer science graduate who builds responsive websites, Android apps and AI-powered projects. Available for freelance work.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">Aleeza</a>
+      <nav aria-label="Main" id="mainNav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-tools">
+        <button id="soundBtn" class="tool-btn" type="button" aria-pressed="true">Sound on</button>
+        <button id="themeBtn" class="tool-btn" type="button" data-sound="none">Dark mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero-text">
+        <p class="status"><span class="pulse" aria-hidden="true"></span>Available for freelance work</p>
+        <h1 aria-label="Hi, I'm Aleeza. I build websites, apps and AI projects."><span class="write" id="line1">Hi, I'm Aleeza.</span><br><span class="write" id="line2">I build </span><span class="typed" id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span></h1>
+        <p class="lead write" id="lead">
+          I'm a computer science graduate who designs and develops responsive websites,
+          Android apps and AI-powered projects. I care about clean design, fast pages and
+          products that are easy to use.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View my work</a>
+          <a class="btn btn-ghost" href="#contact">Let's talk</a>
+        </div>
+        <ul class="socials" aria-label="My profiles">
+          <li><a class="social" data-link="linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a class="social" data-link="fiverr" href="#" target="_blank" rel="noopener noreferrer">Fiverr</a></li>
+          <li><a class="social" data-link="upwork" href="#" target="_blank" rel="noopener noreferrer">Upwork</a></li>
+          <li><a class="social" data-link="github" href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="hero-demo">
+        <div class="demo-top">
+          <div class="demo-controls" role="group" aria-label="Preview size">
+            <button type="button" class="seg" data-sound="none" data-size="desktop" aria-pressed="true">Desktop</button>
+            <button type="button" class="seg" data-sound="none" data-size="phone" aria-pressed="false">Phone</button>
+          </div>
+          <a class="demo-open" href="ember-and-bun/index.html" target="_blank" rel="noopener">Open full site</a>
+        </div>
+
+        <div class="stage">
+          <div class="frame" id="frame" data-size="desktop">
+            <div class="frame-bar" aria-hidden="true">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">Live demo: Ember &amp; Bun</span>
+            </div>
+            <iframe src="ember-and-bun/index.html" title="Ember and Bun restaurant website demo" loading="lazy"></iframe>
+          </div>
+        </div>
+        <p class="demo-caption">
+          This is a sample restaurant website (a demo design). Scroll inside it,
+          add items to the order, and switch between desktop and phone.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="block wrap">
+      <div class="block-head reveal">
+        <h2>About me</h2>
+        <p>A developer who likes turning ideas into things people can use.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a BS Computer Science graduate with a focus on web and mobile development.
+            I build responsive websites with HTML, CSS and JavaScript, and Android apps with
+            Kotlin and Firebase.
+          </p>
+          <p>
+            During my studies I also worked with machine learning. For my final year project
+            I built an AI-based eye disease prediction app using a MobileNet model.
+          </p>
+          <p>
+            Right now I am building my freelance portfolio and I am open to small business
+            websites, restaurant sites, landing pages and app projects. I design for phones
+            first, because that is where most of your customers will see your work.
+          </p>
+        </div>
+
+        <ul class="principles reveal">
+          <li class="card">
+            <h3>Mobile first</h3>
+            <p>Every layout is designed for the small screen first, then expanded for larger ones.</p>
+          </li>
+          <li class="card">
+            <h3>Fast and light</h3>
+            <p>Clean code and lightweight pages that load quickly, even on slow connections.</p>
+          </li>
+          <li class="card">
+            <h3>Clear communication</h3>
+            <p>You always know what is being built, what is next and when to expect it.</p>
+          </li>
+          <li class="card">
+            <h3>Easy to use</h3>
+            <p>Simple navigation and clear buttons, so visitors find what they need in seconds.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="block wrap">
+      <div class="block-head reveal">
+        <h2>What I can build for you</h2>
+        <p>Small, focused projects that help your business look professional online.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card service reveal">
+          <h3>Business websites</h3>
+          <p>A clean, professional site that explains who you are, what you offer and how to contact you.</p>
+        </article>
+        <article class="card service reveal">
+          <h3>Restaurant and cafe sites</h3>
+          <p>Digital menus, photo galleries, opening hours, location and online ordering that works on every phone.</p>
+        </article>
+        <article class="card service reveal">
+          <h3>Landing pages</h3>
+          <p>A single, focused page for a product, an offer or an event, designed to get visitors to act.</p>
+        </article>
+        <article class="card service reveal">
+          <h3>Responsive redesigns</h3>
+          <p>Is your current site hard to use on a phone? I can rebuild it so it looks and works well everywhere.</p>
+        </article>
+        <article class="card service reveal">
+          <h3>Android apps</h3>
+          <p>Simple, useful Android apps built with Kotlin and Firebase, with a clean Material Design layout.</p>
+        </article>
+        <article class="card service reveal">
+          <h3>AI-powered features</h3>
+          <p>Prototypes that use machine learning, such as image classification, built into an app or website.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="block wrap">
+      <div class="block-head reveal">
+        <h2>Selected projects</h2>
+        <p>A few things I have built, from websites to mobile and AI.</p>
+      </div>
+
+      <div class="projects">
+        <article class="card project project-featured reveal">
+          <div class="project-body">
+            <h3>Ember &amp; Bun</h3>
+            <p class="project-sub">Sample design: fast-food restaurant website</p>
+            <p>
+              A complete restaurant website with food illustrations drawn in code, a filterable
+              menu, combo deals and a working order drawer with quantities and a live total.
+              It includes smooth animations, scroll effects and optional sound effects.
+            </p>
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>SVG</li><li>Web Audio</li><li>Responsive</li>
+            </ul>
+            <a class="btn btn-primary" href="ember-and-bun/index.html" target="_blank" rel="noopener">Open live demo</a>
+          </div>
+          <ul class="project-points">
+            <li>Menu categories filter instantly without reloading the page</li>
+            <li>Order drawer with add, remove, quantity and total</li>
+            <li>Food graphics are drawn in code, so they stay sharp and load fast</li>
+            <li>Designed to adapt to phones, tablets and desktops</li>
+          </ul>
+        </article>
+
+        <article class="card project reveal">
+          <h3>EyeCare AI</h3>
+          <p class="project-sub">Final year project</p>
+          <p>
+            An AI-based app that predicts eye diseases using a MobileNet deep-learning model.
+            I built the app and prepared and organised the dataset.
+          </p>
+          <ul class="tags">
+            <li>Machine learning</li><li>MobileNet</li><li>Mobile app</li>
+          </ul>
+        </article>
+
+        <article class="card project reveal">
+          <h3>Food Recipe App</h3>
+          <p class="project-sub">Android application</p>
+          <p>
+            An Android app for saving and browsing recipes with a Material Design layout.
+            Firebase stores and retrieves the data in real time.
+          </p>
+          <ul class="tags">
+            <li>Kotlin</li><li>Android Studio</li><li>Firebase</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="block wrap">
+      <div class="block-head reveal">
+        <h2>How we would work together</h2>
+        <p>A simple process, so there are no surprises.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="card reveal">
+          <h3>Discuss</h3>
+          <p>You tell me about your business and what you need. I ask questions and suggest the simplest way to get there.</p>
+        </li>
+        <li class="card reveal">
+          <h3>Design</h3>
+          <p>I plan the layout, colours and pages so you can see the direction before the build starts.</p>
+        </li>
+        <li class="card reveal">
+          <h3>Build</h3>
+          <p>I build the site with clean, responsive code and share progress so you can give feedback early.</p>
+        </li>
+        <li class="card reveal">
+          <h3>Launch</h3>
+          <p>We test on phone and desktop, fix any issues and put the site online.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="block wrap">
+      <div class="block-head reveal">
+        <h2>Skills and tools</h2>
+        <p>The technologies I work with.</p>
+      </div>
+
+      <div class="skill-groups">
+        <div class="card reveal">
+          <h3>Web development</h3>
+          <ul class="chips">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive design</li><li>Flexbox and Grid</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Mobile development</h3>
+          <ul class="chips">
+            <li>Kotlin</li><li>Android Studio</li><li>Firebase</li><li>Material Design</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>AI and design</h3>
+          <ul class="chips">
+            <li>Machine learning</li><li>MobileNet</li><li>UI/UX design</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="block wrap">
+      <div class="block-head reveal">
+        <h2>Education</h2>
+      </div>
+      <div class="card education reveal">
+        <h3>BS Computer Science</h3>
+        <!-- Optional: add your university name here if you want it public -->
+        <p>Focus on software development, mobile apps and artificial intelligence.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="block wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <h2>Let's work together</h2>
+          <p class="contact-copy">
+            Have a website or app in mind? Tell me a little about it and I will reply
+            with ideas and next steps.
+          </p>
+          <!-- Your email and profile links are set in one place: the LINKS list at the top of script.js -->
+          <ul class="contact-links">
+            <li><a data-link="email" href="#">Email me</a></li>
+            <li><a data-link="linkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a data-link="fiverr" href="#" target="_blank" rel="noopener noreferrer">Fiverr</a></li>
+            <li><a data-link="upwork" href="#" target="_blank" rel="noopener noreferrer">Upwork</a></li>
+            <li><a data-link="github" href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="card reveal" novalidate>
+          <label for="name">Your name</label>
+          <input type="text" id="name" autocomplete="name">
+
+          <label for="email">Your email</label>
+          <input type="email" id="email" autocomplete="email">
+
+          <label for="message">How can I help?</label>
+          <textarea id="message" rows="4"></textarea>
+
+          <button type="submit" class="btn btn-primary" data-sound="none">Send message</button>
+          <p id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>&copy; 2026 Aleeza. Built with HTML, CSS and JavaScript.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="sound.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

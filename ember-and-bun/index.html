@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ember &amp; Bun | Flame-grilled burgers, fast</title>
+  <meta name="description" content="Ember & Bun is a sample fast-food restaurant website: flame-grilled burgers, crispy chicken, fries and shakes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Food illustrations. They are drawn once here and reused everywhere with <use>.
+       Colors come from CSS variables, so one drawing can have many versions. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="burger" viewBox="0 0 200 200">
+        <path d="M30 142H170Q170 170 140 170H60Q30 170 30 142Z" fill="var(--bun,#E8A04C)"/>
+        <rect x="24" y="110" width="152" height="30" rx="15" fill="var(--patty,#5A2E1B)"/>
+        <path d="M28 100H172V108H152L142 126L132 108H28Z" fill="var(--cheese,#FFC53D)"/>
+        <path d="M24 94q9.500 12 19 0t19 0 19 0 19 0 19 0 19 0 19 0 19 0v8H24Z" fill="var(--leaf,#5BAE4A)"/>
+        <path d="M30 92Q30 38 100 38Q170 38 170 92Z" fill="var(--bun,#E8A04C)"/>
+        <path d="M44 80Q60 52 100 50" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <g fill="#FFF3D6">
+          <ellipse cx="78" cy="62" rx="6" ry="3" transform="rotate(-20 78 62)"/>
+          <ellipse cx="104" cy="54" rx="6" ry="3" transform="rotate(10 104 54)"/>
+          <ellipse cx="128" cy="68" rx="6" ry="3" transform="rotate(25 128 68)"/>
+          <ellipse cx="96" cy="76" rx="6" ry="3" transform="rotate(-8 96 76)"/>
+          <ellipse cx="146" cy="82" rx="6" ry="3" transform="rotate(30 146 82)"/>
+        </g>
+      </symbol>
+
+      <symbol id="fries" viewBox="0 0 200 200">
+        <g fill="var(--fry,#FFC53D)" stroke="#E0A21A" stroke-width="2">
+          <rect x="58" y="40" width="12" height="80" rx="4" transform="rotate(-14 64 80)"/>
+          <rect x="76" y="28" width="12" height="90" rx="4" transform="rotate(-6 82 73)"/>
+          <rect x="94" y="22" width="12" height="96" rx="4"/>
+          <rect x="112" y="30" width="12" height="90" rx="4" transform="rotate(7 118 75)"/>
+          <rect x="130" y="42" width="12" height="80" rx="4" transform="rotate(15 136 82)"/>
+        </g>
+        <path d="M54 100L66 182H134L146 100Z" fill="var(--box,#E8431A)"/>
+        <path d="M54 100H146L144 112H56Z" fill="#000" fill-opacity=".12"/>
+        <circle cx="100" cy="140" r="17" fill="#FFF3D6"/>
+        <path d="M100 128c8 8 12 12 12 18a12 12 0 0 1-24 0c0-6 4-10 12-18Z" fill="var(--box,#E8431A)"/>
+      </symbol>
+
+      <symbol id="cup" viewBox="0 0 200 200">
+        <rect x="100" y="14" width="10" height="52" rx="5" transform="rotate(12 105 40)" fill="#FFF3D6"/>
+        <rect x="54" y="58" width="92" height="16" rx="7" fill="var(--lid,#2B2320)"/>
+        <path d="M62 74L72 184H128L138 74Z" fill="var(--drink,#E8431A)"/>
+        <path d="M65.500 104L68 132H132L134.500 104Z" fill="#FFF3D6"/>
+        <circle cx="100" cy="118" r="10" fill="var(--drink,#E8431A)"/>
+        <path d="M74 80L80 176" stroke="#fff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="shake" viewBox="0 0 200 200">
+        <rect x="102" y="10" width="9" height="62" rx="4.500" transform="rotate(10 106 40)" fill="#FFF3D6"/>
+        <path d="M60 78L72 184H128L140 78Z" fill="var(--shake,#6B3A22)" />
+        <path d="M60 78H140L138 96H62Z" fill="#fff" fill-opacity=".18"/>
+        <g fill="#FFF8EA">
+          <circle cx="76" cy="70" r="16"/><circle cx="100" cy="62" r="20"/><circle cx="124" cy="70" r="16"/>
+        </g>
+        <circle cx="100" cy="38" r="9" fill="#D7263D"/>
+        <path d="M72 100L78 172" stroke="#fff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="chicken" viewBox="0 0 200 200">
+        <g transform="rotate(-32 100 100)">
+          <rect x="124" y="91" width="48" height="18" rx="9" fill="#FFF3D6"/>
+          <circle cx="174" cy="88" r="12" fill="#FFF3D6"/>
+          <circle cx="174" cy="112" r="12" fill="#FFF3D6"/>
+          <ellipse cx="88" cy="100" rx="58" ry="44" fill="var(--crisp,#D98324)"/>
+          <ellipse cx="82" cy="90" rx="44" ry="30" fill="#F0A84A" fill-opacity=".55"/>
+          <g fill="#B2641A">
+            <circle cx="60" cy="96" r="4"/><circle cx="84" cy="116" r="4"/>
+            <circle cx="104" cy="88" r="4"/><circle cx="74" cy="78" r="3"/>
+            <circle cx="112" cy="110" r="3"/>
+          </g>
+        </g>
+      </symbol>
+
+      <symbol id="rings" viewBox="0 0 200 200">
+        <circle cx="84" cy="108" r="40" fill="none" stroke="var(--ring,#D98324)" stroke-width="22"/>
+        <circle cx="84" cy="108" r="40" fill="none" stroke="#F0A84A" stroke-opacity=".6" stroke-width="8"/>
+        <circle cx="122" cy="88" r="40" fill="none" stroke="var(--ring,#D98324)" stroke-width="22"/>
+        <circle cx="122" cy="88" r="40" fill="none" stroke="#F0A84A" stroke-opacity=".6" stroke-width="8"/>
+      </symbol>
+
+      <symbol id="flame" viewBox="0 0 200 200">
+        <path d="M100 14C112 52 152 76 152 124C152 158 128 186 100 186C72 186 48 158 48 124C48 94 66 78 76 52C84 70 90 74 96 76C94 56 92 38 100 14Z" fill="#FF5A1F"/>
+        <path d="M100 96C108 114 128 124 128 148C128 166 116 178 100 178C84 178 72 166 72 148C72 126 92 118 100 96Z" fill="#FFC53D"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="nav" id="top">
+    <a class="logo" href="#top" aria-label="Ember and Bun home">
+      <svg class="logo-flame" aria-hidden="true"><use href="#flame"/></svg>
+      <span>Ember &amp; Bun</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#deals">Deals</a>
+      <a href="#why">Why us</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="soundBtn" type="button" data-sound="none" aria-pressed="true">Sound on</button>
+      <button class="icon-btn cart-btn" id="cartBtn" type="button" data-sound="none" aria-label="Open your order">
+        Order <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Flame-grilled. Smashed. Stacked.</h1>
+        <p>Juicy burgers, crispy chicken and golden fries, made to order and ready in minutes.</p>
+        <div class="hero-cta">
+          <a class="btn btn-fire" href="#menu">Order now</a>
+          <a class="btn btn-line" href="#deals">See today's deals</a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong>10 min</strong> average prep</li>
+          <li><strong>100%</strong> made to order</li>
+          <li><strong>Open</strong> until 2 AM</li>
+        </ul>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="glow"></div>
+        <svg class="art art-burger" id="heroBurger"><use href="#burger"/></svg>
+        <svg class="art art-fries"><use href="#fries"/></svg>
+        <svg class="art art-cup"><use href="#cup"/></svg>
+        <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span>
+        <span class="spark s4"></span><span class="spark s5"></span>
+      </div>
+    </section>
+
+    <!-- SCROLLING STRIP -->
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>Flame-grilled</span><svg><use href="#flame"/></svg>
+        <span>Crispy chicken</span><svg><use href="#flame"/></svg>
+        <span>Fresh buns</span><svg><use href="#flame"/></svg>
+        <span>Thick shakes</span><svg><use href="#flame"/></svg>
+        <span>Flame-grilled</span><svg><use href="#flame"/></svg>
+        <span>Crispy chicken</span><svg><use href="#flame"/></svg>
+        <span>Fresh buns</span><svg><use href="#flame"/></svg>
+        <span>Thick shakes</span><svg><use href="#flame"/></svg>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="section-head reveal">
+        <h2>The menu</h2>
+        <p>Pick a category and add your favourites to your order.</p>
+      </div>
+
+      <div class="tabs reveal" role="tablist" aria-label="Menu categories" id="tabs">
+        <button class="tab is-active" role="tab" aria-selected="true" data-cat="burgers" data-sound="none">Burgers</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="chicken" data-sound="none">Chicken</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="sides" data-sound="none">Sides</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="drinks" data-sound="none">Drinks</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <!-- DEALS -->
+    <section class="section section-dark" id="deals">
+      <div class="section-head reveal">
+        <h2>Combo deals</h2>
+        <p>More food, better price.</p>
+      </div>
+
+      <div class="deals">
+        <article class="deal reveal">
+          <div class="deal-art">
+            <svg><use href="#burger"/></svg>
+            <svg><use href="#fries" style="--box:#FF5A1F"/></svg>
+            <svg><use href="#cup"/></svg>
+          </div>
+          <h3>Solo Smash Combo</h3>
+          <p>One Ember Smash burger, golden fries and a cold drink.</p>
+          <div class="deal-foot">
+            <span class="price">Rs. 1,190</span>
+            <button class="btn btn-fire btn-sm" data-deal="solo" data-sound="none">Add deal</button>
+          </div>
+        </article>
+
+        <article class="deal reveal">
+          <div class="deal-art">
+            <svg><use href="#burger"/></svg>
+            <svg><use href="#burger" style="--bun:#D98324; --cheese:#FF8A3D"/></svg>
+            <svg><use href="#fries"/></svg>
+          </div>
+          <h3>Duo Feast</h3>
+          <p>Two burgers, large fries and two drinks. Made for sharing.</p>
+          <div class="deal-foot">
+            <span class="price">Rs. 2,150</span>
+            <button class="btn btn-fire btn-sm" data-deal="duo" data-sound="none">Add deal</button>
+          </div>
+        </article>
+
+        <article class="deal reveal">
+          <div class="deal-art">
+            <svg><use href="#chicken"/></svg>
+            <svg><use href="#burger"/></svg>
+            <svg><use href="#rings"/></svg>
+          </div>
+          <h3>Family Box</h3>
+          <p>Four burgers, crispy chicken, onion rings, fries and four drinks.</p>
+          <div class="deal-foot">
+            <span class="price">Rs. 3,990</span>
+            <button class="btn btn-fire btn-sm" data-deal="family" data-sound="none">Add deal</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section" id="why">
+      <div class="section-head reveal">
+        <h2>Fast food, done properly</h2>
+        <p>We keep it simple, and we do it well.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why reveal">
+          <h3>Flame-grilled flavour</h3>
+          <p>Every patty is grilled over open flame for a smoky taste you can notice in the first bite.</p>
+        </div>
+        <div class="why reveal">
+          <h3>Made to order</h3>
+          <p>Your food is cooked when you order it, not before, so it reaches you hot and fresh.</p>
+        </div>
+        <div class="why reveal">
+          <h3>Ready in minutes</h3>
+          <p>Short queues and a simple menu mean you spend less time waiting and more time eating.</p>
+        </div>
+        <div class="why reveal">
+          <h3>Easy ordering</h3>
+          <p>Build your order online in a few taps, whether you are on a phone or a computer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="section section-dark" id="visit">
+      <div class="visit">
+        <div class="reveal">
+          <h2>Come hungry</h2>
+          <p class="visit-lead">Dine in, take away or order for delivery.</p>
+          <ul class="visit-list">
+            <li><strong>Hours</strong><span>Every day, 12 PM to 2 AM</span></li>
+            <li><strong>Address</strong><span>12 Sample Street, Your City</span></li>
+            <li><strong>Phone</strong><span>+00 000 0000000</span></li>
+          </ul>
+        </div>
+        <div class="visit-card reveal">
+          <svg aria-hidden="true"><use href="#flame"/></svg>
+          <p>Hungry right now? Your burger is only a few taps away.</p>
+          <a class="btn btn-fire" href="#menu">Start your order</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>Ember &amp; Bun</strong> is a sample restaurant website, a demo design shown in a portfolio.
+       The menu, prices, address and phone number are not real.</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <!-- ORDER DRAWER -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your order</h2>
+      <button class="icon-btn" id="closeCart" type="button" data-sound="none">Close</button>
+    </div>
+    <ul class="cart-list" id="cartList"></ul>
+    <p class="cart-empty" id="cartEmpty">Your order is empty. Add something tasty from the menu.</p>
+    <div class="drawer-foot">
+      <div class="total"><span>Total</span><strong id="cartTotal">Rs. 0</strong></div>
+      <button class="btn btn-fire" id="checkoutBtn" type="button" data-sound="none">Place order</button>
+      <button class="link-btn" id="clearCart" type="button" data-sound="none">Clear order</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../sound.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
